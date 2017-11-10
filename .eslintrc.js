@@ -24,5 +24,6 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 0,
     'function-paren-newline': 0,
+    'no-return-assign': 0,
   },
 };
