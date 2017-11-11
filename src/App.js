@@ -8,6 +8,7 @@ class App extends Component {
     super();
 
     this.addUser = this.addUser.bind(this);
+    this.removeUser = this.removeUser.bind(this);
     this.state = {
       users: {},
     };
@@ -36,6 +37,12 @@ class App extends Component {
     this.setState({ users });
   }
 
+  removeUser(user) {
+    const users = { ...this.state.users };
+    delete users[user];
+    this.setState({ users });
+  }
+
   render() {
     return (
       <div className="App">
@@ -50,7 +57,7 @@ class App extends Component {
           {
             Object
               .keys(this.state.users)
-              .map(key => <User key={key} details={this.state.users[key]} />)
+              .map(key => <User key={key} index={key} details={this.state.users[key]} removeUser={this.removeUser} />)
           }
         </ul>
       </div>
