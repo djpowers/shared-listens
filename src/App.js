@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Shared Music Taste</h1>
+          <h1 className="App-title">Shared Listens</h1>
         </header>
         <p className="App-intro">
           To get started, enter some <code>Last.fm usernames</code> and submit.
