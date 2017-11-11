@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import AddUserForm from './AddUserForm';
+import User from './User';
 
 class App extends Component {
   constructor() {
@@ -31,6 +32,13 @@ class App extends Component {
           To get started, enter some <code>Last.fm usernames</code> and submit.
         </p>
         <AddUserForm addUser={this.addUser} />
+        <ul className="list-of-users">
+          {
+            Object
+              .keys(this.state.users)
+              .map(key => <User key={key} details={this.state.users[key]} />)
+          }
+        </ul>
       </div>
     );
   }
