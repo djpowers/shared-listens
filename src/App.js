@@ -13,6 +13,20 @@ class App extends Component {
     };
   }
 
+  componentWillMount() {
+    const localStorageRef = localStorage.getItem('sharedListensFriends');
+
+    if (localStorageRef) {
+      this.setState({
+        users: JSON.parse(localStorageRef),
+      });
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('sharedListensFriends', JSON.stringify(nextState.users));
+  }
+
   addUser(user) {
     // copy our state
     const users = { ...this.state.users };
