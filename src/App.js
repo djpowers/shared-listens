@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+} from 'react-router-dom';
 import './App.css';
-import AddUserForm from './AddUserForm';
-import User from './User';
+import UsersList from './UsersList';
+import SharedMusic from './SharedMusic';
 
 class App extends Component {
   constructor() {
@@ -45,22 +51,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Shared Listens</h1>
-        </header>
-        <p className="App-intro">
-          To get started, enter some <code>Last.fm usernames</code> and submit.
-        </p>
-        <AddUserForm addUser={this.addUser} />
-        <ul className="list-of-users">
-          {
-            Object
-              .keys(this.state.users)
-              .map(key => <User key={key} index={key} details={this.state.users[key]} removeUser={this.removeUser} />)
-          }
-        </ul>
-      </div>
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <Link to="/">
+              <h1 className="App-title">Shared Listens</h1>
+            </Link>
+          </header>
+          <Switch>
+            <Route exact path="/" render={() => <UsersList users={this.state.users} addUser={this.addUser} removeUser={this.removeUser} />} />
+            <Route path="/shared_music" component={SharedMusic} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
