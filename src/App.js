@@ -60,7 +60,7 @@ class App extends Component {
           </header>
           <Switch>
             <Route exact path="/" render={() => <UsersList users={this.state.users} addUser={this.addUser} removeUser={this.removeUser} />} />
-            <Route path="/shared_music" component={SharedMusic} />
+            <Route path="/shared_music" render={() => <SharedMusic users={this.state.users} />} />
           </Switch>
         </div>
       </Router>
