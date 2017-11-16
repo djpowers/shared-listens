@@ -57,6 +57,6 @@ export default SharedMusic;
 
 SharedMusic.propTypes = {
   users: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
   }).isRequired,
 };
