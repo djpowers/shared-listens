@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 class TrackDetail extends React.Component {
   render() {
@@ -7,15 +8,13 @@ class TrackDetail extends React.Component {
       image, album, name, artist,
     } = this.props.track;
     return (
-      <ul className="list-of-tracks">
-        <li className="track-item">
-          <figure>
-            <img src={image[1]['#text']} alt={album['#text']} />
-            <figcaption><em>{album['#text']}</em></figcaption>
-          </figure>
-          <span className="track-details"><strong>"{name}"</strong> <span>by</span> <strong>{artist['#text']}</strong></span>
-        </li>
-      </ul>
+      <TrackItem className="track-item">
+        <figure>
+          <Cover src={image[1]['#text']} alt={album['#text']} />
+          <figcaption><em>{album['#text']}</em></figcaption>
+        </figure>
+        <span className="track-details"><strong>"{name}"</strong> <span>by</span> <strong>{artist['#text']}</strong> <span>from</span> <em>{album['#text']}</em></span>
+      </TrackItem>
     );
   }
 }
@@ -34,3 +33,20 @@ TrackDetail.propTypes = {
     }).isRequired,
   }).isRequired,
 };
+
+const TrackItem = styled.li`
+  > span {
+    margin-top: 15px;
+    text-align: left;
+  }
+  > figure {
+    margin: 8px 20px;
+  }
+  display: flex;
+`;
+
+const Cover = styled.img`
+  &:hover{
+    opacity: 0.8;
+  }
+`;

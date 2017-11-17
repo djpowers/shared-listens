@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import TrackDetail from './TrackDetail';
 
 class TrackList extends React.Component {
@@ -13,8 +14,7 @@ class TrackList extends React.Component {
     return (
       <div>
         <h2 className="user-name">{index}</h2>
-        <ul className="track-lists">{tracksList}</ul>
-        {tracksList}
+        <List className="track-lists">{tracksList}</List>
       </div>
     );
   }
@@ -30,3 +30,7 @@ TrackList.propTypes = {
     }).isRequired,
   }),
 };
+
+const List = styled.ul`
+  list-style-type: none;
+`;
