@@ -7,7 +7,7 @@ class User extends React.Component {
     const removeButton = <button onClick={() => this.props.removeUser(index)}>&times;</button>;
 
     return (
-      <li className="users-list">
+      <li className="users-list-item">
         <img src={details.image[1]['#text']} alt={details.name} />
         <p className="user-name">{details.name}</p>
         {removeButton}
