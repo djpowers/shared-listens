@@ -4,4 +4,4 @@ A project built using React (via [Create React App](https://github.com/facebooki
 
 Allows you to enter a list of users from Last.fm, and then show you music that you both/all have listened to recently.
 
-To run, install dependencies with `npm install`, and then `npm start` to run the Express server and React client.
+To run, copy `.env.example` to `.env` and add your [Last.fm API key](https://www.last.fm/api/authentication), install dependencies with `npm install`, and then `npm start` to run the Express server and React client.

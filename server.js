@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 app.set('port', process.env.PORT || 3001);
 
+require('dotenv').config();
+
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
@@ -10,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const fetch = require('node-fetch');
 
-const API_KEY = '';
+const API_KEY = process.env.API_KEY;
 const LIMIT = 200;
 
 app.get('/api/users/:user', (req, res) => {
