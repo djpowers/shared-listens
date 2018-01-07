@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import TrackList from './TrackList';
 
-const API_KEY = '';
-
 class SharedMusic extends React.Component {
   constructor() {
     super();
@@ -17,10 +15,9 @@ class SharedMusic extends React.Component {
 
   componentDidMount() {
     const recentTracks = {};
-    const limit = 200;
     Object
       .keys(this.props.users)
-      .map((key => fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${key}&limit=${limit}&api_key=${API_KEY}&format=json`)
+      .map((key => fetch(`/api/recent/${key}`)
         .then(res => res.json())
         .then(data => recentTracks[key] = data)
         .catch(error =>

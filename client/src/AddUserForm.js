@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const API_KEY = '';
-
 class AddUserForm extends Component {
   async fetchUser(event) {
     event.preventDefault();
     try {
-      const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${this.user.value}&api_key=${API_KEY}&format=json`);
+      const response = await fetch(`/api/users/${this.user.value}`);
       const data = await response.json();
       if (data.user) {
         this.props.addUser(data.user);
